@@ -31,6 +31,10 @@
 
 ## 5 分钟启动
 
+## 一键部署到 Render
+
+本项目包含 Node.js 后端，不能只用 GitHub Pages。可以在 Render 创建免费的 Web Service，连接本仓库并使用仓库中的 `render.yaml`；启动命令是 `npm start`，健康检查路径是 `/api/v1/health`。免费实例闲置后会休眠，首次唤醒可能需要约一分钟。
+
 ### 1. 准备环境
 
 在 Mac 安装：

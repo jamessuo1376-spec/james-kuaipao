@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: james-kuaipao
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: ENABLE_PUBLIC_METADATA_FALLBACK
+        value: true
+      - key: META_GRAPH_VERSION
+        value: v24.0
+      - key: NODE_VERSION
+        value: 20

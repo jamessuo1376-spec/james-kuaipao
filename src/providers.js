@@ -35,6 +35,7 @@ export async function resolveWithOfficialOEmbed(instagramUrl, config, fetchImpl 
 }
 
 export async function resolveWithPublicMetadata(instagramUrl, fetchImpl = fetch) {
+  const isReel = /\/reels?\//.test(new URL(instagramUrl).pathname);
   const response = await fetchImpl(instagramUrl, {
     redirect: "follow",
     headers: {
@@ -45,6 +46,24 @@ export async function resolveWithPublicMetadata(instagramUrl, fetchImpl = fetch)
     signal: AbortSignal.timeout(8000),
   });
   if (!response.ok) {
+    // Hosting-provider IPs are sometimes blocked from the canonical page while
+    // Instagram's public embed remains available. For Reels, try that public
+    // embed before reporting the page as unavailable.
+    if (isReel) {
+      const embedVideo = await resolvePublicEmbedVideo(instagramUrl, fetchImpl);
+      if (isAllowedMediaUrl(embedVideo)) {
+        return {
+          provider: "public-instagram-embed",
+          title: "Instagram Reel",
+          authorName: "",
+          authorUrl: "",
+          thumbnailUrl: "",
+          media: [{ type: "video", url: embedVideo }],
+          embedHtml: "",
+          note: "普通公开页面受限，视频来自 Instagram 公开嵌入页面；链接可能失效。",
+        };
+      }
+    }
     throw new ProviderError("公开页面不可访问，可能需要登录或受到地区限制", "PUBLIC_PAGE_UNAVAILABLE");
   }
 
@@ -62,7 +81,6 @@ export async function resolveWithPublicMetadata(instagramUrl, fetchImpl = fetch)
   const image = getMeta("og:image");
   // Public Reel pages often expose only a poster. Instagram's public embed page
   // may still include the playable media used by the official embed itself.
-  const isReel = /\/reels?\//.test(new URL(instagramUrl).pathname);
   if (!isAllowedMediaUrl(video) && isReel) {
     video = await resolvePublicEmbedVideo(instagramUrl, fetchImpl);
   }

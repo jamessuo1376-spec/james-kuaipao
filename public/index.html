@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="james快跑，帮助创作者预览、整理和保存获授权的 Instagram 公开素材。" />
+    <title>james快跑 · 创作者素材助手</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/commercial.css" />
+  </head>
+  <body>
+    <header class="nav shell">
+      <a class="brand" href="#top" aria-label="james快跑首页"><span>J</span> james快跑</a>
+      <nav aria-label="主导航">
+        <a href="#features">功能</a><a href="#free">免费使用</a><a href="#faq">常见问题</a>
+      </nav>
+      <a class="nav-cta" href="#tool">免费体验</a>
+    </header>
+
+    <main id="top">
+      <section class="hero shell">
+        <div class="hero-copy">
+          <span class="eyebrow">为创作者而生 · PUBLIC MEDIA HELPER</span>
+          <h1>好素材，<br /><em>别让它跑掉。</em></h1>
+          <p>粘贴公开 Instagram 分享链接，快速预览并保存你本人拥有或已获授权的图片与视频。无需安装软件。</p>
+          <div class="hero-actions"><a class="primary" href="#tool">立即免费使用</a><a class="secondary" href="#how">看看怎么用 →</a></div>
+          <div class="trust-row"><span>✓ 完全免费不限次数</span><span>✓ 无需 Instagram 密码</span><span>✓ 不保存媒体文件</span></div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="speed-card"><span>READY</span><strong>3</strong><i>秒快速解析</i></div>
+          <div class="mini-card">公开内容<br /><b>安全预览 ↗</b></div>
+        </div>
+      </section>
+
+      <section id="tool" class="tool-section shell">
+        <div class="section-label">01 / 在线工具</div>
+        <div class="card">
+          <div class="card-head"><div><h2>粘贴链接，开始奔跑</h2><p>支持公开帖子、Reels 与 IGTV</p></div><span class="live"><i></i> 服务在线</span></div>
+          <form id="resolve-form">
+            <label for="instagram-url">Instagram 分享链接</label>
+            <div class="input-row">
+              <input id="instagram-url" name="url" type="url" required placeholder="https://www.instagram.com/reel/.../" autocomplete="off" />
+              <button type="submit">解析内容</button>
+            </div>
+            <label class="consent"><input id="rights" type="checkbox" required /><span>我确认内容为公开内容，并且我有权保存或使用它。</span></label>
+          </form>
+          <div id="status" role="status" aria-live="polite"></div>
+          <section id="result" class="result" hidden></section>
+        </div>
+      </section>
+
+      <section id="features" class="features shell">
+        <div class="section-label">02 / 为什么选择我们</div>
+        <div class="section-intro"><h2>简单，但不简陋。</h2><p>把繁琐的素材处理，变成一次粘贴。</p></div>
+        <div class="feature-grid">
+          <article><b>01</b><h3>视频优先识别</h3><p>智能区分 Reel 视频与封面，不再把视频错误导出成静态图片。</p></article>
+          <article><b>02</b><h3>移动端友好</h3><p>手机浏览器直接使用，并为微信小程序迁移预留统一接口。</p></article>
+          <article><b>03</b><h3>隐私更克制</h3><p>无需提交 Instagram 密码，不处理私密账号，不长期保存素材。</p></article>
+        </div>
+      </section>
+
+      <section id="how" class="how shell">
+        <div class="section-label">03 / 使用方法</div>
+        <div class="steps"><div><span>1</span><h3>复制</h3><p>在 Instagram 复制公开内容的分享链接</p></div><i>→</i><div><span>2</span><h3>粘贴</h3><p>把链接放入 james快跑并确认内容授权</p></div><i>→</i><div><span>3</span><h3>保存</h3><p>预览正确后，下载平台公开提供的版本</p></div></div>
+      </section>
+
+      <section id="free" class="pricing shell">
+        <div class="section-label">04 / 永久免费</div>
+        <div class="section-intro"><h2>¥0，不限次数。</h2><p>不注册、不订阅，也没有隐藏收费。</p></div>
+        <div class="price-grid free-grid">
+          <article class="featured"><span class="popular">FREE FOREVER</span><span class="plan">JAMES快跑</span><h3>免费公开版</h3><div class="price"><b>¥0</b><small>/ 永久</small></div><ul><li>公开内容解析不限次数</li><li>图片与 Reel 视频预览</li><li>平台公开版本下载</li><li>移动端直接使用</li></ul><a href="#tool" class="plan-button">立即免费使用</a></article>
+        </div>
+      </section>
+
+      <section id="faq" class="faq shell">
+        <div class="section-label">05 / 常见问题</div>
+        <h2>你可能还想知道</h2>
+        <details><summary>可以下载任何 Instagram 内容吗？<span>＋</span></summary><p>不可以。仅处理无需登录即可访问的公开帖子，并且你必须拥有内容或获得作者许可。私密账号、Stories、登录墙和受保护内容均不支持。</p></details>
+        <details><summary>下载的是绝对原画质吗？<span>＋</span></summary><p>我们返回 Instagram 当前公开提供的媒体版本，不会绕过平台限制，因此不承诺上传前的原始文件。</p></details>
+        <details><summary>为什么有时解析会失败？<span>＋</span></summary><p>公开页面也可能受到地区、年龄、登录或临时限流影响。媒体临时链接过期后可重新解析。</p></details>
+        <details><summary>你们会保存我的链接或视频吗？<span>＋</span></summary><p>当前版本不建立用户素材库，也不会长期保存媒体文件。正式会员功能上线前会提供完整隐私政策和删除机制。</p></details>
+      </section>
+
+      <section class="final-cta shell"><span>JAMES快跑</span><h2>让素材回来，<br />让创作继续。</h2><a class="primary" href="#tool">免费解析一个链接</a></section>
+    </main>
+
+    <footer class="shell"><a class="brand" href="#top"><span>J</span> james快跑</a><p>jameskuaipao.com · 非 Instagram 官方产品</p><div><a href="#faq">使用规范</a><a href="mailto:jamessuo1376@gmail.com">邮件客服</a><button class="wechat-contact" type="button">微信：JamesMarlboro0309</button></div></footer>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

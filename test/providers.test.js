@@ -30,3 +30,15 @@ test("uses the public embed video for a Reel and treats og:image as poster only"
   assert.equal(result.media[0].url, "https://video.xx.fbcdn.net/clip.mp4?x=1&y=2");
   assert.equal(result.thumbnailUrl, "https://scontent.cdninstagram.com/poster.jpg");
 });
+
+test("falls back to the public Reel embed when the canonical page blocks a hosting IP", async () => {
+  const fakeFetch = async (url) => {
+    if (String(url).includes("/embed/captioned/")) {
+      return new Response(String.raw`{\"video_url\":\"https:\/\/video.xx.fbcdn.net\/hosted-reel.mp4\"}`, { status: 200 });
+    }
+    return new Response("blocked", { status: 429 });
+  };
+  const result = await resolveWithPublicMetadata("https://www.instagram.com/reel/DXxn-2Fuc6n/", fakeFetch);
+  assert.equal(result.provider, "public-instagram-embed");
+  assert.equal(result.media[0].type, "video");
+});
